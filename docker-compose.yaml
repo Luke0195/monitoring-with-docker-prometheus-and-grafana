@@ -29,6 +29,8 @@ services:
       - 9090:9090
     networks:
       - live_prometheus
+    volumes:
+      - prometheus.yaml:etc/prometheus/prometheus.yml
 
 volumes:
   db_mongo:

@@ -1,0 +1,18 @@
+global:
+  ## Intervalo entre as metricas
+  scrape_interval: "1m"
+  ## Tempo de espera entre os intervalo.
+  scrape_timeout: "10s"
+  evaluation_interval: "1m"
+  ## ira realizar a configura de coleta.
+scrape_configs:
+  - job_name: rottenpotatoes
+    scrape_interval: 1m
+    scrape_timeout: 10s
+    static_configs:
+      - targets:
+          - web:8080
+  - job_name: prometheus
+    static_configs:
+      - targets:
+          - localhost:9090
