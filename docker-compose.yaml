@@ -1,0 +1,37 @@
+services:
+  web:
+    image: leandroaurelio/rotten-potatoes:latest
+    ports:
+      - "8080:5000"
+    networks:
+      - live_prometheus
+    depends_on:
+      - mongodb
+      - prometheus
+    environment:
+      MONGODB_DB: "admin"
+      MONGODB_HOST: "mongodb"
+      MONGODB_PORT: "27017"
+      MONGODB_USERNAME: "mongouser"
+      MONGODB_PASSWORD: "mongopwd"
+  mongodb:
+    image: mongo:7.0
+    volumes:
+      - db_mongo:/data/db
+    networks:
+      - live_prometheus
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongouser
+      MONGO_INITDB_ROOT_PASSWORD: mongopwd
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - 9090:9090
+    networks:
+      - live_prometheus
+
+volumes:
+  db_mongo:
+networks:
+  live_prometheus:
+    driver: bridge

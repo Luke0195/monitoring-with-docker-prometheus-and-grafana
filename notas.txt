@@ -1,0 +1,5 @@
+Para conseguir metrícas para previnir erros na aplicação.
+Exporter vai ser o intermediador de métricas de uma aplicação especifica. o exporter ira mandar essas informações para o prometheus e o mesmo salvara as métricas.
+SLI ->
+SLO ->
+SLA ->
